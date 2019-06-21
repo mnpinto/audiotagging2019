@@ -14,7 +14,7 @@ git clone https://github.com/mnpinto/audiotagging2019.git
 
 * Download the competition data from kaggle (https://www.kaggle.com/c/freesound-audio-tagging-2019/data) to `audiotagging2019/data/` folder and unzip the `test.zip`, `train_curated.zip` and `train_noisy.zip` to folders `test`, `train_curated` and `train_noisy`. 
 
-* On `àudiotagging2019` folder run:
+* On `audiotagging2019` folder run:
 ```bash
 python run.py --n_epochs 1 --max_processors 8
 ```
@@ -23,7 +23,7 @@ If successful the script will create `train_curated_png` and `train_noisy_png` f
 **If you find any errors let me know by creating an Issue, the code has not yet been tested on fastai versions after 1.0.51.**
 
 ## Replicating my top scoring solution
-**Important! This code has not yet been tested. I ran all experiments on Kaggle kernels and refactored the code to create this repository. After the final results of the competition are available, late submissions will be allowed so I will then test the code to check anything is missing.**
+**Important! This code has not yet been tested. I ran all experiments on Kaggle kernels and refactored the code to create this repository. After the final results of the competition are available, late submissions will be allowed so I will then test the code to check if anything is missing.**
 
 My top scoring solution with a score of **0.742 on public LB** and **0.75421 on private LB** is the average of the following 6 runs:
 ```bash
