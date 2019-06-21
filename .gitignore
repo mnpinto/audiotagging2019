@@ -1,0 +1,8 @@
+.ipynb_checkpoints/
+__pycache__
+models/
+data/test/
+data/train_curated/
+data/train_noisy/
+data/train_curated_png/
+data/train_noisy_png/
