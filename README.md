@@ -25,7 +25,7 @@ If successful the script will create `train_curated_png` and `train_noisy_png` f
 ## Replicating my top scoring solution
 **Important! This code has not yet been tested. I ran all experiments on Kaggle kernels and refactored the code to create this repository. After the final results of the competition are available, late submissions will be allowed so I will then test the code to check if anything is missing.**
 
-My top scoring solution with a score of **0.742 on public LB** and **0.75421 on private LB** is the average of the following 6 runs:
+My top scoring solution with a score of **0.742 on public LB** and **0.75421 on private LB** (final results pending...) is the average of the following 6 runs:
 ```bash
 python run.py --model xresnet18ssa --base_dim 128 --SZ 256 --fold_number -1 \
               --n_epochs 80 --loss_name FocalLoss --weights_file model1 --csv_name submission1.csv
