@@ -1,4 +1,4 @@
-# Freesound Audio Tagging 2019 Competition
+# 7th place [public LB] solution for Freesound Audio Tagging 2019 Competition
 
 ## How to use 
 * Install fastai and librosa:
