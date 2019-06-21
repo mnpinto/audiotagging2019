@@ -8,7 +8,7 @@ import argparse
 def main(path=None, model=None, base_dim=None, SZ=None, BS=None, lr=None,
          n_epochs=None, epoch_size=None, f2cl=None, fold_number=None,
          loss_name=None, csv_name=None, weights_file=None, working_path=None,
-         max_processors=None, force=None):
+         max_processors=None, load_weights=None, force=None):
     utils.base_dim = base_dim
     utils.SZ = SZ
     utils.f2cl = f2cl
@@ -134,8 +134,12 @@ def main(path=None, model=None, base_dim=None, SZ=None, BS=None, lr=None,
                             callback_fns=[AudioMixup])
     learn.clip_grad = 1
 
+    if load_weights is not None:
+        print(f'\n\nLoading {load_weights}.pth weights.')
+        learn.load(load_weights)
+
     # Train
-    print('\n\nTraning the model:')
+    print('\nTraning the model:')
     learn.fit_one_cycle(n_epochs, slice(lr))
     learn.save(weights_file)
     print(f'\nModel weights save to {working_path/"models"/weights_file}.pth.')
@@ -218,6 +222,7 @@ if __name__ == '__main__':
     arg('--loss_name', type=str, default='BCELoss', choices=['BCELoss', 'FocalLoss'])
     arg('--csv_name', type=str, default='submission.csv')
     arg('--model', type=str, default='models.xresnet18')
+    arg('--load_weights', type=str, default='')
     arg('--weights_file', type=str, default='stage-1')
     arg('--max_processors', type=int, default=8)
     arg('--force', type=bool, default=False)
@@ -227,11 +232,19 @@ if __name__ == '__main__':
     model = eval(args.model)
     working_path = Path(args.working_path)
 
+    fold_number = args.fold_number
+    if fold_number == -1:
+        fold_number = None
+
+    load_weights = args.load_weights
+    if load_weights == '':
+        load_weights = None
+
     print('\nStarting run using the following configuration:')
     for arg in vars(args):
         print(f'{arg:14s}: {getattr(args, arg)}')
 
     main(path=path, model=model, working_path=working_path, base_dim=args.base_dim, SZ=args.SZ, BS=args.BS,
-         lr=args.lr, n_epochs=args.n_epochs, epoch_size=args.epoch_size, f2cl=args.f2cl, fold_number=args.fold_number,
+         lr=args.lr, n_epochs=args.n_epochs, epoch_size=args.epoch_size, f2cl=args.f2cl, fold_number=fold_number,
          loss_name=args.loss_name, csv_name=args.csv_name, weights_file=args.weights_file, max_processors=args.max_processors,
-         force=args.force)
+         load_weights=load_weights, force=args.force)
