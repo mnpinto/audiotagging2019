@@ -50,3 +50,16 @@ python run.py --model models.xresnet50 --base_dim 128 --SZ 256 --fold_number -1 
 
 ```
 The penultimate run, generating `model6_0` weights is not used for the ensemble, is just to generate the weights that are used to the last identical run. If you are running locally, try a single run with more epochs, the 2x65 epochs is just to accommodate for the 9h run-time limit of Kaggle kernels.
+
+
+# Citing this repository
+```bibtex
+@misc{mnpinto2019audio,
+  author = {Pinto, M. M.},
+  title = {7th place [public LB] solution for Freesound Audio Tagging 2019 Competition},
+  year = {2019},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/mnpinto/audiotagging2019}}
+}
+```
