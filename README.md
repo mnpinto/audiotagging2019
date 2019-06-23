@@ -22,6 +22,29 @@ If successful the script will create `train_curated_png` and `train_noisy_png` f
 
 **If you find any errors let me know by creating an Issue, the code has not yet been tested on fastai versions after 1.0.51.**
 
+## Arguments
+|name|type|default|description|
+|---|---|---|---|
+|`--path`|`str`|`data`|path to data folder| 
+|`--working_path`|`str`|`.`|path to working folder where model weights and outputs will be saved|
+|`--base_dim`|`int`|`128`|size to crop the images on the horizontal axis before rescaling with `SZ`| 
+|`--SZ`|`int`|`128`|images will be rescaled to `SZxSZ`| 
+|`--BS`|`int`|`64`|batch size| 
+|`--lr`|`float`|`0.01`|maximum learning rate for `one_cycle_learning`| 
+|`--n_epochs`|`int`|`80`|number of epochs to train the model| 
+|`--epoch_size`|`int`|`1000`|number of episodes (with batch size `BS` each) in each epoch| 
+|`--f2cl`|`int`|`1`|train only on samples with F2 score (with threshold of 0.2) less than `f2cl`| 
+|`--fold_number`|`int`|`0`|KFold cross-validation fold number: (0,1,2,3,4) or -1 to train with all data| 
+|`--loss_name`|`str`|`BCELoss`|loss function to use, options are `BCELoss` and `FocalLoss`| 
+|`--csv_name`|`str`|`submission.csv`|name of csv file to save with test predictions| 
+|`--model`|`str`|`models.xresnet18`|can be a fastai model as the default or `xresnet{18,34,50}ssa` to use simple self-attention| 
+|`--weights_file`|`str`|`stage-1`|name of file to save the weights| 
+|`--load_weights`|`str`||provide the name of weights file (e.g., stage-1) to load before training| 
+|`--max_processors`|`int`|`8`|number cpu threads to use for converting wav files to png| 
+|`--force`|`bool`|`False`|if set to `True` the pngs will be recomputed for noisy and curated train datasets| 
+
+
+
 ## Replicating my top scoring solution
 **Important! This code has not yet been tested. I ran all experiments on Kaggle kernels and refactored the code to create this repository. After the final results of the competition are available, late submissions will be allowed so I will then test the code to check if anything is missing.**
 
