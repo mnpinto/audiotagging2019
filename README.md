@@ -69,7 +69,7 @@ python run.py --model models.xresnet50 --base_dim 128 --SZ 256 --fold_number -1 
               --n_epochs 65 --weights_file model6_0
               
 python run.py --model models.xresnet50 --base_dim 128 --SZ 256 --fold_number -1 \
-              --n_epochs 65 --load_weights model6 --weights_file model6 --csv_name submission6.csv             
+              --n_epochs 65 --load_weights model6_0 --weights_file model6 --csv_name submission6.csv             
 
 ```
 The penultimate run, generating `model6_0` weights is not used for the ensemble, is just to generate the weights that are used to the last identical run. If you are running locally, try a single run with more epochs, the 2x65 epochs is just to accommodate for the 9h run-time limit of Kaggle kernels.
