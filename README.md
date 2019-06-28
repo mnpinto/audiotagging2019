@@ -1,4 +1,4 @@
-# 7th place [public LB] solution for Freesound Audio Tagging 2019 Competition
+# 6th place solution for Freesound Audio Tagging 2019 Competition
 
 ## How to use 
 * Install fastai and librosa:
@@ -79,7 +79,7 @@ The penultimate run, generating `model6_0` weights is not used for the ensemble,
 ```bibtex
 @misc{mnpinto2019audio,
   author = {Pinto, M. M.},
-  title = {7th place [public LB] solution for Freesound Audio Tagging 2019 Competition},
+  title = {6th place solution for Freesound Audio Tagging 2019 Competition},
   year = {2019},
   publisher = {GitHub},
   journal = {GitHub repository},
