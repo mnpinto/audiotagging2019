@@ -129,11 +129,10 @@ def main(path=None, model=None, base_dim=None, SZ=None, BS=None, lr=None,
             .normalize([tensor([0.2932, 0.2932, 0.2932]), tensor([0.2556, 0.2556, 0.2556])]))
 
     # Create learner
-    mod_name = inspect.getmodule(model).__name__
-    if 'fastai.vision.models' in  mod_name or 'torchvision.models' in mod_name:
+    try:
         learn = cnn_learner(data, model, pretrained=False, loss_func=loss_func, metrics=[fbeta, lwlrap], 
                             callback_fns=[AudioMixup])
-    else:
+    except:
         learn = Learner(data, model(c_out=data.c), loss_func=loss_func, metrics=[fbeta, lwlrap], 
                             callback_fns=[AudioMixup])
     learn.clip_grad = 1
