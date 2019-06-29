@@ -33,7 +33,10 @@ class RandomSampler(RandomSampler):
     def __init__(self, data_source, replacement=False, num_samples=None, **kwargs):
         self.data_source = data_source
         self.replacement = replacement
-        self.num_samples = num_samples
+        try:
+            self.num_samples = num_samples
+        except:
+            self._num_samples = num_samples
         
 
 class FixedLenRandomSampler(RandomSampler):
