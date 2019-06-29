@@ -58,10 +58,11 @@ def main(path=None, model=None, base_dim=None, SZ=None, BS=None, lr=None,
     train_df.loc[:, 'fname'] = [f[:-4] for f in train_df.fname]
     train_noisy_df = pd.read_csv(path2/'train_noisy.csv').iloc[good_noisy]
     train_noisy_df.loc[:, 'fname'] = [f[:-4] for f in train_noisy_df.fname]
-    data_path = Path('../input/audiotagging128/train_curated_128/data/') if kaggle else path
+    data_path_curated = Path('../input/audiotagging128/train_curated_128/data/') if kaggle else path
+    data_path_noisy = Path('../input/audiotagging128/train_noisy_128/data/') if kaggle else path
     png = '' if kaggle else '_png'
-    X_train_curated = [np.array(PIL.Image.open(data_path/f'train_curated{png}/{fn}.png')) for fn in progress_bar(train_df.fname)]
-    X_train_noisy = [np.array(PIL.Image.open(data_path/f'train_noisy{png}/{fn}.png')) for fn in progress_bar(train_noisy_df.fname)]
+    X_train_curated = [np.array(PIL.Image.open(data_path_curated/f'train_curated{png}/{fn}.png')) for fn in progress_bar(train_df.fname)]
+    X_train_noisy = [np.array(PIL.Image.open(data_path_noisy/f'train_noisy{png}/{fn}.png')) for fn in progress_bar(train_noisy_df.fname)]
     train_df = pd.concat((train_df, train_noisy_df)).reset_index(drop=True)
     train_df['ind'] = train_df.index
     train_df.set_index('fname', inplace=True)
@@ -108,8 +109,8 @@ def main(path=None, model=None, base_dim=None, SZ=None, BS=None, lr=None,
                           xtra_tfms=[cutout2(n_holes=(1, 4), length=(5, 20), p=0.75)])
 
     # ImageLists
-    train = ImageListMemory.from_df(train_df, path=data_path, cols='fname', folder='train') 
-    test = ImageListMemory.from_df(test_df, path=data_path, cols='fname', folder='test') 
+    train = ImageListMemory.from_df(train_df, path=data_path_curated, cols='fname', folder='train') 
+    test = ImageListMemory.from_df(test_df, path=data_path_noisy, cols='fname', folder='test') 
 
     # Custom samplers
     train_sampler = partial(FixedLenRandomSampler, epoch_size=epoch_size)
