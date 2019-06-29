@@ -49,6 +49,7 @@ def main(path=None, model=None, base_dim=None, SZ=None, BS=None, lr=None,
     test_df['fname'] = test_df.index
 
     # Load indices of noisy data to use 
+    path_idx = 'audiotagging128/data' if kaggle else path
     good_noisy = pd.read_csv(path/'good_idx.csv').idx.values
 
     # Create train dataframe and list of arrays
