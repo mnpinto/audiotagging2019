@@ -80,7 +80,7 @@ The penultimate run, generating `model6_0` weights is not used for the ensemble,
 |Model | private LB scores |
 |---|---|
 |xresnet18ssa| [0.74211, 0.74695] |
-|xresnet34ssa| [0.74875] |
+|xresnet34ssa| [0.74545, 0.74875] |
 
 # Citing this repository
 ```bibtex
