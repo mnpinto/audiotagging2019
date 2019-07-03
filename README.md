@@ -81,7 +81,7 @@ The penultimate run, generating `model6_0` weights is not used for the ensemble,
 |---|---|
 |xresnet18ssa| [0.74211, 0.74695] |
 |xresnet34ssa| [0.74545, 0.74875] |
-|xresnet50| [0.73966] |
+|xresnet50| [0.73966, 0.74062] |
 
 # Citing this repository
 ```bibtex
