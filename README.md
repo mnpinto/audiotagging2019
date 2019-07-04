@@ -83,6 +83,12 @@ The penultimate run, generating `model6_0` weights is not used for the ensemble,
 |xresnet34ssa| [0.74545, 0.74875] |
 |xresnet50| [0.73966, 0.74062] |
 
+* Fixed parameters: `--base_dim 128 --SZ 256 --fold_number -1 --n_epochs 80 --loss_name BCELoss`
+
+|Model | private LB scores |
+|---|---|
+|xresnet18ssa| [0.73824, 0.73956] |
+
 # Citing this repository
 ```bibtex
 @misc{mnpinto2019audio,
