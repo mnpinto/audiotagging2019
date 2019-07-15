@@ -1,5 +1,7 @@
 # 6th place solution for Freesound Audio Tagging 2019 Competition
 
+**Description of the solution:** https://link.medium.com/Kv5kyHjcIX
+
 ## How to use 
 * Install fastai and librosa:
 ```bash
