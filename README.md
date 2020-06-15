@@ -76,6 +76,21 @@ python run.py --model models.xresnet50 --base_dim 128 --SZ 256 --fold_number -1 
 ```
 The penultimate run, generating `model6_0` weights is not used for the ensemble, is just to generate the weights that are used to the last identical run. If you are running locally, try a single run with more epochs, the 2x65 epochs is just to accommodate for the 9h run-time limit of Kaggle kernels.
 
+# Ablation study (in progress)*
+* Fixed parameters: `--base_dim 128 --SZ 256 --fold_number -1 --n_epochs 80 --loss_name FocalLoss`
+
+|Model | private LB scores |
+|---|---|
+|xresnet18ssa| [0.74211, 0.74695] |
+|xresnet34ssa| [0.74545, 0.74875] |
+|xresnet50| [0.73966, 0.74062] |
+
+* Fixed parameters: `--base_dim 128 --SZ 256 --fold_number -1 --n_epochs 80 --loss_name BCELoss`
+
+|Model | private LB scores |
+|---|---|
+|xresnet18ssa| [0.73824, 0.73956] |
+|xresnet34ssa| [0.74378, 0.74567] |
 
 # Citing this repository
 ```bibtex
